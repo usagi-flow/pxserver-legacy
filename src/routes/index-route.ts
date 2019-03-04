@@ -1,27 +1,19 @@
 import * as express from "express";
 import Model from "../model";
+import AbstractRoute from "./abstract-route";
 
-export default class IndexRoute
+export default class IndexRoute extends AbstractRoute
 {
-	private router : express.Router;
-	private model : Model;
-
-	public constructor(model : Model)
+	protected configureHandlers(model : Model) : void
 	{
-		this.router = express.Router();
-		this.model = model;
-		this.router.get("/test-message",
-			(request : express.Request, response : express.Response, next : express.NextFunction) =>
-				this.testMessage(model, request, response, next));
-		this.router.get("/",
-			(request : express.Request, response : express.Response, next : express.NextFunction) =>
-				this.handler(model, request, response, next));
+		this.registerHandler("/test-message", this.testMessage);
+		this.registerHandler("/", this.handler);
 	}
 
 	private handler(model : Model, request : express.Request, response : express.Response, next : express.NextFunction) : void
 	{
 		console.log("Handling Index route request");
-		response.render("index", {title: "Express"});
+		response.render("index", {title: "Express+"});
 	}
 
 	private testMessage(model : Model, request : express.Request, response : express.Response, next : express.NextFunction) : void
@@ -30,10 +22,5 @@ export default class IndexRoute
 		response.setHeader("content-type", "text/plain");
 		response.setHeader("Cache-Control", "no-store");
 		response.send("Hello world!");
-	}
-
-	public getRouter() : express.Router
-	{
-		return this.router;
 	}
 }
