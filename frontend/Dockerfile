@@ -31,4 +31,4 @@ RUN npm run build && \
 WORKDIR /opt/app
 
 EXPOSE 4200
-ENTRYPOINT PORT=4200 ./start.sh
+ENTRYPOINT sleep 5 && PORT=4200 ./start.sh

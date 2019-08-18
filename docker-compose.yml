@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   frontend:
     build: ./frontend
     container_name: frontend
@@ -9,10 +10,14 @@ services:
       - ${PWD}/frontend/node_modules:/opt/app/node_modules
     ports:
       - "4200:4200"
-    restart: on-failure
-#  backend:
-#    build: ./backend
-#    container_name: backend
-#    volumes:
-#      - ${PWD}/common:/opt/common
-#    restart: on-failure
+    restart: "no" #on-failure
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: backend
+    volumes:
+      - ${PWD}/common:/opt/common
+      - ${PWD}/backend/node_modules:/opt/app/node_modules
+    restart: "no" #on-failure

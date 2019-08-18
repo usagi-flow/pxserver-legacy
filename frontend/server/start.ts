@@ -40,6 +40,15 @@ class ServerStarter
 		var starter : ServerStarter = new ServerStarter();
 
 		starter.start();
+
+		console.log("Connecting to the backend");
+		let options : http.RequestOptions = {
+			socketPath: "/opt/common/ipc.socket" // TODO: magic
+		};
+		http.request(options, (response) => {
+			console.log("Received IPC response");
+			console.log(response);
+		});
 	}
 }
 
