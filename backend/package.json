@@ -17,14 +17,13 @@
 		"copy-assets": "ts-node copy-assets.ts",
 		"build-final": "javascript-obfuscator ./app --output ./dist --compact true",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon dist/app/start.js"
+		"start": "node dist/app/start.js"
 	},
 	"author": "Etienne Kerinckx",
 	"license": "ISC",
 	"dependencies": {
 		"express": "^4.16.4",
 		"hbs": "^4.0.2",
-		"nodemon": "^1.18.10",
 		"serve-favicon": "^2.5.0"
 	},
 	"devDependencies": {

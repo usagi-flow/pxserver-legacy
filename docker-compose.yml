@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    volumes:
+      - ${PWD}/common:/opt/common
+      - ${PWD}/frontend/node_modules:/opt/app/node_modules
+    ports:
+      - "4200:4200"
+    restart: on-failure
+#  backend:
+#    build: ./backend
+#    container_name: backend
+#    volumes:
+#      - ${PWD}/common:/opt/common
+#    restart: on-failure
