@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "node start.js",
-    "build": "npm run build-server && npm run build-client && npm run copy-assets",
+    "build": "yarn run build-server && yarn run build-client && yarn run copy-assets",
     "build-server": "tsc --pretty -p ./tsconfig.server.json",
-    "build-client": "ng build --output-path=../app/public --aot=false",
+    "build-client": "ng build --output-path=../app/public --aot=false --source-map=false",
     "copy-assets": "ts-node copy-assets.ts",
     "test": "ng test",
     "lint": "ng lint",

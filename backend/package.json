@@ -8,7 +8,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "npm run build-ts && npm run copy-assets",
+    "build": "yarn run build-ts && yarn run copy-assets",
     "build-ts": "tsc --pretty",
     "watch-ts": "tsc --pretty -w",
     "copy-assets": "ts-node copy-assets.ts",
