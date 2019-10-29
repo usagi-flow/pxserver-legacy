@@ -4,6 +4,8 @@
 /dist
 /dist-server
 /app
+/app.frontend
+/app.backend
 
 # Temporary files
 /tmp
