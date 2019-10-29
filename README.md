@@ -1,6 +1,4 @@
-<center>
 ![](https://bitbucket.org/eti_pixel/pxserver/raw/b7b895f0f7f60c1c85aa350281cee358cd2ef8f9/assets/pxserver.png)
-</center>
 
 
 ## ![](https://raw.githubusercontent.com/google/material-design-icons/master/maps/1x_web/ic_directions_run_black_18dp.png) Getting started
