@@ -19,7 +19,6 @@ COPY --chown=node:node . .
 
 # Build output goes to /opt/app
 RUN yarn run build && \
-	mv package.json ../app/ && \
 	mv node_modules ../cache && \
 	cd .. && \
 	rm -rf src && \
