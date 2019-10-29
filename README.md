@@ -1,5 +1,4 @@
-pxserver
-========
+![](https://bitbucket.org/eti_pixel/pxserver/raw/b7b895f0f7f60c1c85aa350281cee358cd2ef8f9/assets/pxserver.png)
 
 A simple, service-oriented NodeJS-based application stack, written in TypeScript.
 
