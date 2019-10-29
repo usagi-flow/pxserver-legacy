@@ -1,10 +1,12 @@
-version: '3'
+version: '3.2' # TODO: verify PWD behavior
 
 services:
 
   frontend:
     build: ./frontend
     container_name: frontend
+    environment:
+      - SOCKET=/opt/common/redis.sock
     volumes:
       - ${PWD}/common:/opt/common
       - ${PWD}/frontend/node_modules:/opt/app/node_modules
@@ -13,11 +15,23 @@ services:
     restart: "no" #on-failure
     depends_on:
       - backend
+      - datastore_volatile
 
   backend:
     build: ./backend
     container_name: backend
+    environment:
+      - SOCKET=/opt/common/redis.sock
     volumes:
       - ${PWD}/common:/opt/common
       - ${PWD}/backend/node_modules:/opt/app/node_modules
     restart: "no" #on-failure
+    depends_on:
+      - datastore_volatile
+
+  datastore_volatile:
+    build: ./redis
+    container_name: datastore_volatile
+    volumes:
+      - ${PWD}/common:/opt/common
+    restart: "on-failure"

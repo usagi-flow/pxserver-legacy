@@ -32,4 +32,4 @@ RUN mkdir /opt/app && \
 WORKDIR /opt/app
 
 #EXPOSE 4200
-ENTRYPOINT SOCKET=/opt/common/ipc.socket ./start.sh
+ENTRYPOINT sleep 3 && ./start.sh

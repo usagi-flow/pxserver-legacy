@@ -1,34 +1,43 @@
-import * as http from "http";
-import * as io from "socket.io";
+import * as redis from "redis";
 
 import Server from "./server";
 
 class ServerStarter
 {
 	protected static SOCKET : string = process.env.SOCKET || "/opt/common/ipc.socket";
-	//private server : Server;
-	private httpServer : http.Server;
+
+	private redisIn : redis.RedisClient;
+	private redisInReady : boolean = false;
+	private redisOut : redis.RedisClient;
+	private redisOutReady : boolean = false;
 
 	private constructor()
 	{
-		//this.server = Server.create();
+		this.redisIn = redis.createClient(ServerStarter.SOCKET);
 
-		//this.server.express.set("port", this.port);
+		this.redisIn.on("ready", () => {
+			this.redisInReady = true;
+			console.log("Subscribing");
+			this.redisIn.subscribe("frontend-to-backend:pxserver");
+		});
+		this.redisIn.on("message", (channel : string, message : string) => {
+			console.log("Channel <" + channel + ">: " + message);
+			if (this.redisOutReady)
+				this.redisOut.publish("backend-to-frontend:pxserver", "Received your message!");
+		});
 
-		this.httpServer = http.createServer(this.handler);
-		this.httpServer.on("listening", () => this.onListening(this));
-		this.httpServer.on("connection", () => this.onConnection(this));
-		this.httpServer.on("error", (error) => this.onError(this, error));
+		this.redisOut = redis.createClient(ServerStarter.SOCKET);
+		this.redisOut.on("ready", () => {
+			this.redisOutReady = true;
+			setTimeout(() => {
+				console.log("Sending a message");
+				this.redisOut.publish("backend-to-frontend:pxserver", "Hello from Backend!");
+			}, 3000)
+		});
 	}
 
 	private start() : void
 	{
-		this.httpServer.listen(ServerStarter.SOCKET);
-	}
-
-	private handler(request : http.IncomingMessage, response : http.ServerResponse)
-	{
-		response.end("Goodbye");
 	}
 
 	private onListening(starter : ServerStarter) : void
