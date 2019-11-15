@@ -10,7 +10,7 @@
 		"build-ts": "tsc --pretty",
 		"watch-ts": "tsc --pretty -w",
 		"copy-assets": "ts-node -T copy-assets.ts",
-		"start": "NODE_PATH=\"$(pwd)\" echo Path_$NODE_PATH; node ."
+		"start": "node ."
 	},
 	"dependencies": {
 		"@types/redis": "^2.8.13",

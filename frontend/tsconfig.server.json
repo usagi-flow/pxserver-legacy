@@ -5,8 +5,7 @@
 		"target": "es5",
 		"noImplicitAny": true,
 		"removeComments": true,
-		"moduleResolution": "node",
-		"sourceMap": false
+		"moduleResolution": "node"
 	},
 	"paths": {
 		"*": [

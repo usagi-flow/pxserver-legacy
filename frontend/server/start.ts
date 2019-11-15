@@ -27,6 +27,11 @@ class ServerStarter
 		this.httpServer.on("listening", () => this.onListening(this));
 		this.httpServer.on("error", (error) => this.onError(this, error));
 
+		//this.connectToBackend();
+	}
+
+	private connectToBackend()
+	{
 		console.log("Connecting to the backend");
 
 		this.redisIn = redis.createClient(ServerStarter.SOCKET);

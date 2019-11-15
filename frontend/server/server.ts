@@ -32,7 +32,6 @@ export default class Server
 			console.log("Setting up routes");
 			this.express.use("/", new IndexRoute(this.model).getRouter());
 			this.express.use(express.static(path.join(__dirname, "public")));
-			//this.express.use("/context", new TestRoute(this.model).getRouter());
 			this.express.use(this.fallbackHandler);
 		}
 		else
@@ -47,9 +46,6 @@ export default class Server
 	{
 		response.statusCode = 404;
 		response.send("<!DOCTYPE html><html><body>404 - Not found</body></html>");
-		//var error : HTTPError = new HTTPError("Not Found");
-		//error.status = 404;
-		//next(error);
 	}
 
 	public static create() : Server
