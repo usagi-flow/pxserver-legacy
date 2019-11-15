@@ -4,7 +4,7 @@
 	"description": "pxserver",
 	"author": "etienne-k",
 	"license": "GPL-3.0-or-later",
-	"main": "run/main.js",
+	"main": "run/start.js",
 	"scripts": {
 		"ng": "ng",
 		"start": "node .",
