@@ -6,6 +6,8 @@
 /app
 /app.frontend
 /app.backend
+/backend/run
+/frontend/run
 
 # Temporary files
 /tmp

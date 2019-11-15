@@ -1,18 +1,14 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../app/",
-    "types": []
-  },
-  "files": [
-    "client/main.ts",
-    "client/polyfills.ts"
-  ],
-  "include": [
-    "client/**/*.ts"
-  ],
-  "exclude": [
-    "client/test.ts",
-    "client/**/*.spec.ts"
-  ]
+	"extends": "./tsconfig.json",
+	"files": [
+		"client/main.ts",
+		"client/polyfills.ts"
+	],
+	"include": [
+		"client/**/*.ts"
+	],
+	"exclude": [
+		"client/test.ts",
+		"client/**/*.spec.ts"
+	]
 }
