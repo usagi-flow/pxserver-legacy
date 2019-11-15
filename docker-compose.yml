@@ -8,8 +8,8 @@ services:
     environment:
       - SOCKET=/opt/common/redis.sock
     volumes:
-      - ${PWD}/common:/opt/common
-      - ${PWD}/frontend/node_modules:/opt/app/node_modules
+      - ./common:/opt/common
+      - ./frontend/node_modules:/opt/app/node_modules
     ports:
       - "4200:4200"
     restart: "no" #on-failure
@@ -23,8 +23,8 @@ services:
     environment:
       - SOCKET=/opt/common/redis.sock
     volumes:
-      - ${PWD}/common:/opt/common
-      - ${PWD}/backend/node_modules:/opt/app/node_modules
+      - ./common:/opt/common
+      - ./backend/node_modules:/opt/app/node_modules
     restart: "no" #on-failure
     depends_on:
       - datastore_volatile
@@ -33,5 +33,5 @@ services:
     build: ./redis
     container_name: datastore_volatile
     volumes:
-      - ${PWD}/common:/opt/common
+      - ./common:/opt/common
     restart: "on-failure"
